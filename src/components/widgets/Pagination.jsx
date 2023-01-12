@@ -27,7 +27,7 @@ const Pagination = ({ total=0, itemsPerPage=10, currentPage=1, onPageChange }) =
 
         return pages
 
-    }, [totalPages, currentPage])
+    }, [totalPages, currentPage, onPageChange])
 
     if( totalPages === 0 ) return null;
 
