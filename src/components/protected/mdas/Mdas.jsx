@@ -2,7 +2,6 @@ import Sidebar from '../common/Sidebar';
 import { HiOutlineOfficeBuilding, HiOutlinePlus } from 'react-icons/hi'
 import { PageTitle } from '../../widgets/PageTitle';
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 import Pagination from '../../widgets/Pagination';
 import Search from '../../widgets/Search';
@@ -11,6 +10,7 @@ import TableHeader from '../../widgets/TableHeader';
 import MdasRecord from './MdasRecord';
 import { getMdas } from '../../../actions/mdasAction';
 import DataRows from '../../widgets/DataRows';
+import NewmdaForm from './NewmdaForm';
 
 const columns = [
     {
@@ -53,7 +53,13 @@ export const Mdas = () => {
     const [sorting, setSorting] = useState({ field: "", order: "" });
     let ITEMS_PER_PAGE = itemsPerPage;
 
+    const [form, setForm] = useState(false);
+
     const [deleteStatus, setDeleteStatus] = useState();
+
+    const showForm = () => {
+        setForm(!form);
+    }
 
     const mdasData = useMemo(() => {
 
@@ -107,9 +113,16 @@ export const Mdas = () => {
                         <HiOutlineOfficeBuilding size={20} className="text-[#00df9a]" />
                         <h1 className='text-md'>List of MDAs</h1>
                     </div>
-                    <Link to="/create-mda" className='w-full font-medium bg-transparent border border-[#00df9a] rounded-lg text-[#00df9a] py-3 mt-3 md:mt-0'>
+                    <div 
+                        className='w-full font-medium bg-transparent border border-[#00df9a] rounded-lg text-[#00df9a] py-3 mt-3 md:mt-0'
+                        onClick={showForm}
+                    >
                         <HiOutlinePlus size={20} className="mx-auto" />
-                    </Link>
+                    </div>
+                </div>
+
+                <div className={form ? 'block' : 'hidden'}>
+                    <NewmdaForm setDeleteStatus={setDeleteStatus} />
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-8 py-2 px-4 border-t-1 border-gray-900'>

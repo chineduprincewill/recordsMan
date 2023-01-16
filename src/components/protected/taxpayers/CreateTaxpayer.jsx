@@ -160,8 +160,8 @@ const CreateTaxpayer = () => {
                         {/* Personal information sectiion */}
                         <div className={`p-3 ${active === 'bio' ? 'block' : 'hidden'}`}>
                             <div className='grid md:grid-cols-3'>
-                                {category === 'organization' && <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                {category === 'organization' && <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -174,8 +174,8 @@ const CreateTaxpayer = () => {
                                 </div>}
                                 {category === 'individual' && 
                                     <Fragment>
-                                        <div className='md:my-4 md:px-4'>
-                                            <div className='my-8'>
+                                        <div className='md:my-2 md:px-4'>
+                                            <div className='my-2'>
                                                 <select
                                                     className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                                     onChange={(e) => setTitle(e.target.value)}
@@ -186,8 +186,8 @@ const CreateTaxpayer = () => {
                                                 </select>
                                             </div>
                                         </div>
-                                        <div className='md:my-4 md:px-4'>
-                                            <div className='my-8'>
+                                        <div className='md:my-2 md:px-4'>
+                                            <div className='my-2'>
                                                 <input 
                                                     type="text" 
                                                     className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -198,8 +198,8 @@ const CreateTaxpayer = () => {
                                                 <span className='w-full text-sm text-[red]'>*</span>
                                             </div>
                                         </div>
-                                        <div className='md:my-4 md:px-4'>
-                                            <div className='my-8'>
+                                        <div className='md:my-2 md:px-4'>
+                                            <div className='my-2'>
                                                 <input 
                                                     type="text" 
                                                     className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -210,8 +210,8 @@ const CreateTaxpayer = () => {
                                                 <span className='w-full text-sm text-[red]'>*</span>
                                             </div>
                                         </div>
-                                        <div className='md:my-4 md:px-4'>
-                                            <div className='my-8'>
+                                        <div className='md:my-2 md:px-4'>
+                                            <div className='my-2'>
                                                 <input 
                                                     type="text" 
                                                     className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -221,8 +221,8 @@ const CreateTaxpayer = () => {
                                             </div>
                                         </div>
                                     </Fragment>}
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -233,8 +233,8 @@ const CreateTaxpayer = () => {
                                         <span className='w-full text-sm text-[red]'>*</span>
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -243,8 +243,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                {category === 'individual' && <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                {category === 'individual' && <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="date" 
                                             className="p-3 flex w-full bg-white rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -254,8 +254,8 @@ const CreateTaxpayer = () => {
                                         <p className='text-gray-400 text-xs my-1'>Date of Birth</p>
                                     </div>
                                 </div>}
-                                {category === 'organization' && <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                {category === 'organization' && <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="date" 
                                             className="p-3 flex w-full bg-white rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -265,8 +265,8 @@ const CreateTaxpayer = () => {
                                         <p className='text-gray-400 text-xs my-1'>Start Date</p>
                                     </div>
                                 </div>}
-                                {category === 'individual' && <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                {category === 'individual' && <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <select
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                             onChange={(e) => setGender(e.target.value)}
@@ -278,8 +278,8 @@ const CreateTaxpayer = () => {
                                         </select>
                                     </div>
                                 </div>}
-                                {category === 'individual' && <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                {category === 'individual' && <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <select
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                             onChange={(e) => setMaritalstatus(e.target.value)}
@@ -295,8 +295,8 @@ const CreateTaxpayer = () => {
                                 {category === 'individual' && 
                                 (maritalstatus === 'married' && 
                                 (<Fragment>
-                                    <div className='md:my-4 md:px-4'>
-                                        <div className='my-8'>
+                                    <div className='md:my-2 md:px-4'>
+                                        <div className='my-2'>
                                             <input 
                                                 type="text" 
                                                 className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -305,8 +305,8 @@ const CreateTaxpayer = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className='md:my-4 md:px-4'>
-                                        <div className='my-8'>
+                                    <div className='md:my-2 md:px-4'>
+                                        <div className='my-2'>
                                             <input 
                                                 type="text" 
                                                 className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -315,8 +315,8 @@ const CreateTaxpayer = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className='md:my-4 md:px-4'>
-                                        <div className='my-8'>
+                                    <div className='md:my-2 md:px-4'>
+                                        <div className='my-2'>
                                             <input 
                                                 type="text" 
                                                 className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -332,8 +332,8 @@ const CreateTaxpayer = () => {
                         {/* Address section */}
                         <div className={`p-3 ${active === 'address' ? 'block' : 'hidden'}`}>
                             <div className='grid md:grid-cols-3'>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -344,8 +344,8 @@ const CreateTaxpayer = () => {
                                         <span className='w-full text-sm text-[red]'>*</span>
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -357,8 +357,8 @@ const CreateTaxpayer = () => {
                                     </div>
                                 </div>
                                 
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -369,8 +369,8 @@ const CreateTaxpayer = () => {
                                         <span className='w-full text-sm text-[red]'>*</span>
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <select
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                             onChange={(e) => setState(e.target.value)}
@@ -382,8 +382,8 @@ const CreateTaxpayer = () => {
                                     </div>
                                 </div>
                                 {category === 'individual' && (<Fragment>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -392,8 +392,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -402,8 +402,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -412,8 +412,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <select
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                             onChange={(e) => setStateOfOrigin(e.target.value)}
@@ -430,8 +430,8 @@ const CreateTaxpayer = () => {
                         <div className={`p-3 ${active === 'occupation' ? 'block' : 'hidden'}`}>
                             <div className='grid md:grid-cols-3'>
                                 {category === 'individual' && (<Fragment>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <select
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                             onChange={(e) => setOccupation(e.target.value)}
@@ -442,8 +442,8 @@ const CreateTaxpayer = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -452,8 +452,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -462,8 +462,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="number" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -473,8 +473,8 @@ const CreateTaxpayer = () => {
                                     </div>
                                 </div></Fragment>)}
                                 {category === 'organization' && (<Fragment>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <select
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
                                             onChange={(e) => setSector(e.target.value)}
@@ -485,8 +485,8 @@ const CreateTaxpayer = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="number" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -501,8 +501,8 @@ const CreateTaxpayer = () => {
                         <div className={`p-3 ${active === 'identification' ? 'block' : 'hidden'}`}>
                             <div className='grid md:grid-cols-3'>
                                 {category === 'individual' && (<Fragment>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -511,8 +511,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -521,8 +521,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -531,8 +531,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="number" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -542,8 +542,8 @@ const CreateTaxpayer = () => {
                                     </div>
                                 </div></Fragment>)}
                                 {category === 'organization' && (<Fragment>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -552,8 +552,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 
@@ -562,8 +562,8 @@ const CreateTaxpayer = () => {
                                         />
                                     </div>
                                 </div></Fragment>)}
-                                <div className='md:my-4 md:px-4'>
-                                    <div className='my-8'>
+                                <div className='md:my-2 md:px-4'>
+                                    <div className='my-2'>
                                         <input 
                                             type="text" 
                                             className="p-3 flex w-full bg-transparent rounded-md text-gray-600 border-b border-[#00fd9a]" 

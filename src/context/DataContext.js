@@ -5,9 +5,14 @@ export const DataContext = createContext();
 const DataContextProvider = (props) => {
 
     const [revenueField, setRevenueField] = useState(null);
+    const [taxfields, setTaxfields] = useState(null);
 
     const editRevenueFields = (fieldObject) => {
         setRevenueField(fieldObject);
+    }
+
+    const editTaxfields = (taxObject) => {
+        setTaxfields(taxObject);
     }
 
     useEffect(() => {
@@ -15,8 +20,13 @@ const DataContextProvider = (props) => {
         editRevenueFields();
     }, [])
 
+    useEffect(() => {
+
+        editTaxfields();
+    }, [])
+
     return(
-        <DataContext.Provider value={{editRevenueFields, revenueField}}>
+        <DataContext.Provider value={{editRevenueFields, revenueField, editTaxfields, taxfields}}>
             {props.children}
         </DataContext.Provider>
     )

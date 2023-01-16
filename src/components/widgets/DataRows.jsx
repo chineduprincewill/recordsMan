@@ -3,7 +3,7 @@ import React from 'react'
 const DataRows = ({ data, setItemsPerPage}) => {
   return (
     <select 
-        className='w-[110px] p-1 rounded-md text-black text-sm'
+        className='w-full md:w-[110px] p-1 bg-transparent border-b border-[#00df9a] rounded-md text-gray-400  text-sm'
         onChange={(e) => data !== undefined && setItemsPerPage(e.target.value)}
     >
         <option value="5">No. of rows</option>

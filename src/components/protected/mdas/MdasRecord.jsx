@@ -39,7 +39,7 @@ const MdasRecord = ({ mdas, setDeleteStatus }) => {
         <tbody>
             {mdas.map((mda) => {
                 return (
-                    <tr key={mda.id} className="w-full text-gray-400 px-1 text-sm even:bg-gray-900 odd:bg-[#0c0c0c]">
+                    <tr key={mda.id} className="w-full text-gray-400 px-1 text-sm even:bg-[#141414] odd:bg-[#0c0c0c]">
                         <td className='py-3 px-3 whitespace-nowrap'>{mda.title}</td>
                         <td className='py-3 px-3 whitespace-nowrap'>{mda.initial}</td>
                         <td className='py-3 px-3 whitespace-nowrap'>{mda.created_by}</td>

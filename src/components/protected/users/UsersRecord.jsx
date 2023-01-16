@@ -39,7 +39,7 @@ const UsersRecord = ({ users, setDeleteStatus }) => {
         <tbody>
             {users.map((user) => {
                 return (
-                    <tr key={user.id} className="w-full text-gray-400 px-1 text-sm even:bg-gray-900 odd:bg-[#0c0c0c]">
+                    <tr key={user.id} className="w-full text-gray-400 px-1 text-sm even:bg-[#141414] odd:bg-[#0c0c0c]">
                         <td className='py-3 px-3 whitespace-nowrap'>{user.lastname}</td>
                         <td className='py-3 px-3 whitespace-nowrap'>{user.firstname}</td>
                         <td className='py-3 px-3 whitespace-nowrap'>{user.email}</td>

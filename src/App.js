@@ -27,6 +27,7 @@ import EditWindow from "./components/protected/windows/EditWindow";
 import DataContextProvider from "./context/DataContext";
 import CreateTaxpayer from "./components/protected/taxpayers/CreateTaxpayer";
 import EditTaxpayer from "./components/protected/taxpayers/EditTaxpayer";
+import CreateTax from "./components/protected/taxes/CreateTax";
 
 const App = () => {
   return (
@@ -59,6 +60,7 @@ const App = () => {
                 <Route exact path="/edit-revenue-window" element={<PrivateRoute><EditWindow /></PrivateRoute>} />
                 <Route exact path="/create-taxpayer" element={<PrivateRoute><CreateTaxpayer /></PrivateRoute>} />
                 <Route exact path="/edit-taxpayer" element={<PrivateRoute><EditTaxpayer /></PrivateRoute>} />
+                <Route exact path="/create-tax" element={<PrivateRoute><CreateTax /></PrivateRoute>} />
               </Routes>
             
             <Fragment>
