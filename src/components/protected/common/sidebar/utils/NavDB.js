@@ -1,4 +1,4 @@
-import { HiOutlineReceiptTax, HiOutlineCog, HiOutlineOfficeBuilding, HiOutlineTemplate, HiOutlineUser, HiOutlineUserGroup, HiOutlineBriefcase } from "react-icons/hi";
+import { HiOutlineReceiptTax, HiOutlineCog, HiOutlineOfficeBuilding, HiOutlineTemplate, HiOutlineUser, HiOutlineUserGroup, HiOutlineBriefcase, HiBriefcase } from "react-icons/hi";
 import { AiOutlineWindows } from 'react-icons/ai'
 
 export const system_admin = [
@@ -97,3 +97,59 @@ export const system_auditor = [
     url: '/users',
   },
 ];
+
+
+export const mda_admin = [
+  {
+    id: 0,
+    title: "Dashboard",
+    icon: <HiOutlineTemplate className="nav-icon" />,
+    url: "/dashboard"
+  },
+  {
+    id: 1,
+    title: "Revenue windows",
+    icon: <AiOutlineWindows className="nav-icon" />,
+    url: '/mda-windows',
+  },
+  {
+    id: 2,
+    title: "Assets",
+    icon: <HiBriefcase className="nav-icon" />,
+    url: '/assets',
+  },
+  {
+    id: 3,
+    title: "Users",
+    icon: <HiOutlineUserGroup className="nav-icon" />,
+    url: '/users',
+  },
+]
+
+
+export const mda_auditor = [
+  {
+    id: 0,
+    title: "Dashboard",
+    icon: <HiOutlineTemplate className="nav-icon" />,
+    url: "/dashboard"
+  },
+  {
+    id: 1,
+    title: "Revenue windows",
+    icon: <AiOutlineWindows className="nav-icon" />,
+    url: '/mda-windows',
+  },
+  {
+    id: 2,
+    title: "Assets",
+    icon: <HiBriefcase className="nav-icon" />,
+    url: '/assets',
+  },
+  {
+    id: 3,
+    title: "Users",
+    icon: <HiOutlineUserGroup className="nav-icon" />,
+    url: '/users',
+  },
+]

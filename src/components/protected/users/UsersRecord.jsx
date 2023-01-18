@@ -7,7 +7,7 @@ import { AuthContext } from '../../../context/AuthContext';
 
 const UsersRecord = ({ users, setDeleteStatus }) => {
 
-    const { token } = useContext(AuthContext);
+    const { token, user } = useContext(AuthContext);
 
     const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null);
@@ -37,27 +37,27 @@ const UsersRecord = ({ users, setDeleteStatus }) => {
 
     return (
         <tbody>
-            {users.map((user) => {
+            {users.map((usr) => {
                 return (
-                    <tr key={user.id} className="w-full text-gray-400 px-1 text-sm even:bg-[#141414] odd:bg-[#0c0c0c]">
-                        <td className='py-3 px-3 whitespace-nowrap'>{user.lastname}</td>
-                        <td className='py-3 px-3 whitespace-nowrap'>{user.firstname}</td>
-                        <td className='py-3 px-3 whitespace-nowrap'>{user.email}</td>
-                        <td className='py-3 px-3 whitespace-nowrap'>{user.account}</td>
-                        <td className='py-3 px-3 whitespace-nowrap'>{user.groupname}</td>
-                        <td className='py-3 px-3 whitespace-nowrap'>{user.role}</td>
+                    <tr key={usr.id} className="w-full text-gray-400 px-1 text-sm even:bg-[#141414] odd:bg-[#0c0c0c]">
+                        <td className='py-3 px-3 whitespace-nowrap'>{usr.lastname}</td>
+                        <td className='py-3 px-3 whitespace-nowrap'>{usr.firstname}</td>
+                        <td className='py-3 px-3 whitespace-nowrap'>{usr.email}</td>
+                        <td className='py-3 px-3 whitespace-nowrap'>{usr.account}</td>
+                        <td className='py-3 px-3 whitespace-nowrap'>{usr.groupname}</td>
+                        <td className='py-3 px-3 whitespace-nowrap'>{usr.role}</td>
                         <td className='py-3 px-3 whitespace-nowrap flex'>
                             <Link 
                                 to='/edit-user'
-                                state={{ userObject : user }}
+                                state={{ userObject : usr }}
                                 className='px-2 pt-2 text-[#00df9a]'
                             >
                                 <AiOutlineEdit size={15} />
                             </Link>
-                            {user.account === 'system' && user.role === 'admin' ? '' :
+                            {(usr.account === 'system' && usr.role === 'admin') || (user && (usr.role === 'admin' && user.account !== 'system')) ? '' :
                                 <span 
                                     className='px-2 pt-2 text-[red]'
-                                    onClick={(e) => deleteUser(user.id, user.email)}
+                                    onClick={(e) => deleteUser(usr.id, usr.email)}
                                 >
                                     <HiOutlineTrash size={15} />
                                 </span>

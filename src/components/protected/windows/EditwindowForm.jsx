@@ -9,7 +9,7 @@ const EditwindowForm = ({ winObj }) => {
 
     const navigate = useNavigate();
 
-    const { token } = useContext(AuthContext);
+    const { token, user } = useContext(AuthContext);
 
     const [window, setWindow] = useState(winObj.revenue_window);
     const [description, setDescription] = useState(winObj.description);
@@ -73,9 +73,10 @@ const EditwindowForm = ({ winObj }) => {
                         ></textarea>
                     </div>
                     <div className='my-8'>
-                        {updating ? <Spinner w={135} /> :
+                        {user.role === 'admin' && (
+                            updating ? <Spinner w={135} /> :
                             <button className="bg-[#00fd9a] text-gray-800 w-full rounded-md border border-[#00fd9a] font-medium md:mx-0 py-3">Update</button>
-                        }
+                        )}
                     </div>
                 </div>
             </form>

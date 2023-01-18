@@ -9,7 +9,7 @@ const EdituserForm = ({ usObj }) => {
 
     const navigate = useNavigate();
 
-    const { token } = useContext(AuthContext);
+    const { token, user } = useContext(AuthContext);
 
     const [lastname, setLastname] = useState(usObj.lastname);
     const [firstname, setFirstname] = useState(usObj.firstname);
@@ -130,10 +130,18 @@ const EdituserForm = ({ usObj }) => {
                                 onChange={(e) => setAccount(e.target.value)}
                             >
                                 <option value="">select account type</option>
-                                <option value="system">system</option>
-                                <option value="mda">mda</option>
-                                <option value="agent">agent</option>
-                                <option value="taxpayer">taxpayer</option>
+                                {user && user.account === 'mda' ? 
+                                    <Fragment>
+                                        <option value="mda">mda</option>
+                                    </Fragment>
+                                    :
+                                    <Fragment>
+                                        <option value="system">system</option>
+                                        <option value="mda">mda</option>
+                                        <option value="agent">agent</option>
+                                        <option value="taxpayer">taxpayer</option>
+                                    </Fragment>
+                                }
                             </select>
                         </div>
                         
@@ -195,9 +203,10 @@ const EdituserForm = ({ usObj }) => {
                             </select>
                         </div> 
                         <div className='my-4'>
-                            {updating ? <Spinner w={135} /> :
+                            {user && user.role === 'admin' ? (
+                                updating ? <Spinner w={135} /> :
                                 <button className="bg-transparent text-white w-full rounded-md border border-white font-medium md:mx-0 py-3">Update</button>
-                            }
+                            ) : ''}
                         </div>
                     </div> 
                 </div>

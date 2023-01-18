@@ -9,7 +9,7 @@ const NewuserForm = () => {
 
     const navigate = useNavigate();
 
-    const { token } = useContext(AuthContext);
+    const { token, user } = useContext(AuthContext);
 
     const [lastname, setLastname] = useState();
     const [firstname, setFirstname] = useState();
@@ -124,10 +124,18 @@ const NewuserForm = () => {
                                 onChange={(e) => setAccount(e.target.value)}
                             >
                                 <option value="">select account type</option>
-                                <option value="system">system</option>
-                                <option value="mda">mda</option>
-                                <option value="agent">agent</option>
-                                <option value="taxpayer">taxpayer</option>
+                                {user.account === 'mda' ? 
+                                    <Fragment>
+                                        <option value="mda">mda</option>
+                                    </Fragment>
+                                    :
+                                    <Fragment>
+                                        <option value="system">system</option>
+                                        <option value="mda">mda</option>
+                                        <option value="agent">agent</option>
+                                        <option value="taxpayer">taxpayer</option>
+                                    </Fragment>
+                                }
                             </select>
                         </div>
                         

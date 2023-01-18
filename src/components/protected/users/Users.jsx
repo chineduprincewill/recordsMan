@@ -52,7 +52,7 @@ const columns = [
 
 export const Users = () => {
 
-    const { token, logout } = useContext(AuthContext);
+    const { token, logout, user } = useContext(AuthContext);
 
     const [users, setUsers] = useState(null);
     const [error, setError] = useState();
@@ -122,9 +122,11 @@ export const Users = () => {
                         <HiOutlineUserGroup size={20} className="text-[#00df9a]" />
                         <h1 className='text-md'>List of Users</h1>
                     </div>
-                    <Link to="/create-user" className='w-full font-medium bg-transparent border border-[#00df9a] rounded-lg text-[#00df9a] py-3 mt-3 md:mt-0'>
-                        <HiUserAdd size={20} className="mx-auto" />
-                    </Link>
+                    {user && user.role === 'admin' ? (
+                        <Link to="/create-user" className='w-full font-medium bg-transparent border border-[#00df9a] rounded-lg text-[#00df9a] py-3 mt-3 md:mt-0'>
+                            <HiUserAdd size={20} className="mx-auto" />
+                        </Link>
+                    ) : ''}
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-8 py-2 px-4 border-t-1 border-gray-900'>

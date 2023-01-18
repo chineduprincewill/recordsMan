@@ -14,7 +14,7 @@ import DataRows from '../../widgets/DataRows';
 
 export const Windows = () => {
 
-    const { token, logout } = useContext(AuthContext);
+    const { token, logout, user } = useContext(AuthContext);
 
     const [windows, setWindows] = useState(null);
     const [error, setError] = useState(null);
@@ -66,9 +66,11 @@ export const Windows = () => {
                         <AiOutlineWindows size={20} className="text-[#00df9a]" />
                         <h1 className='text-md'>List of Revenue Windows</h1>
                     </div>
-                    <Link to="/create-revenue-window" className='w-full font-medium bg-transparent border border-[#00df9a] rounded-lg text-[#00df9a] py-3 mt-3 md:mt-0'>
-                        <HiOutlinePlus size={20} className="mx-auto" />
-                    </Link>
+                    {user && user.role === 'admin' ? (
+                        <Link to="/create-revenue-window" className='w-full font-medium bg-transparent border border-[#00df9a] rounded-lg text-[#00df9a] py-3 mt-3 md:mt-0'>
+                            <HiOutlinePlus size={20} className="mx-auto" />
+                        </Link>) : ''
+                    }
                 </div>
 
                 <div className='col-span-2 border-r-1 border-gray-400'>
@@ -94,8 +96,8 @@ export const Windows = () => {
                         </div>
                     </div>
 
-                    <div className='w-full overflow-auto px-4 mt-2'>
-                        {error && <p className='text-sm font-medium text-red-700'>{error}</p>}
+                    <div className={`w-full overflow-auto px-4 ${error === null && 'mt-2'}`}>
+                        {error && <p className='text-sm font-medium text-red-700'>Sorry! {error}</p>}
                         {windows === null ? <Spinner w='250' /> : 
                             windows === undefined ? 
                                 logout() : 

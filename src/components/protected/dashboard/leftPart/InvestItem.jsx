@@ -1,10 +1,11 @@
 import React from 'react'
+import { FcApprove } from 'react-icons/fc'
 
 const InvestItem = ({ item }) => {
-    const { title, desc, icon, upOrDown, percent, price } = item;
+    const { title, desc, icon } = item;
 
     return (
-        <div className='w-full py-2 px-2 items-center justify-between flex'>
+        <div className='w-full items-center justify-between flex'>
             {/* icon+text */}
             <div className='flex items-center justify-center space-x-4 w-full'>
                 <div className='bg-[#DBEEF4] rounded-full py-2 px-2'>
@@ -15,8 +16,13 @@ const InvestItem = ({ item }) => {
                     <p className='text-sm'> {desc} </p>
                 </div>
             </div>
-            {/* price+percent */}
             <div className='w-full items-end justify-end flex flex-col'>
+                <span className='hidden md:block'>
+                    <FcApprove size={20} />
+                </span>
+            </div>
+            {/* price+percent */}
+            {/*<div className='w-full items-end justify-end flex flex-col'>
                 <h1 className='font-bold'> ${price} </h1>
                 <p
                     className={`${
@@ -25,7 +31,7 @@ const InvestItem = ({ item }) => {
                 >
                     {percent}
                 </p>
-            </div>
+            </div>*/}
         </div>
     )
 }

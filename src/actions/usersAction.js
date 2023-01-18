@@ -106,7 +106,7 @@ export const userDelete = async (token, id, setSuccess, setError ) => {
         if (!err?.response) {
             setError('No Server Response');
         } else {
-            setError(err.response.data.status);
+            setError(err.response.data.error);
         }
     }
 }
