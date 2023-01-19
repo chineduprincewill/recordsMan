@@ -33,14 +33,6 @@ const ResetPassword = () => {
 
     }
 
-    if(success !== null){
-        alert('Password Reset Successful!!!');
-        setSuccess(null);
-        
-        navigate('/login');
-    }
-
-
     return (
         <div className="w-full bg-white py-16 px-4">
             <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
@@ -48,6 +40,7 @@ const ResetPassword = () => {
                 <div className="flex flex-col justify-center">
                     <form onSubmit={handleSubmit}>
                         <h1 className="md:text-4xl text-3xl text-center md:text-left font-bold my-2 py-2">Reset Password !</h1>
+                        {success !== null && <span className="bg-green-200 p-3 text-green-900">Password successfully reset! Click <Link to="/login"><strong>here</strong></Link> to login</span>}
                         {error !== null && <span className="text-[red] text-sm py-1">{error}</span>}
                         <p className="my-4">
                             <input 
