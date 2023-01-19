@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { resetPassword } from '../actions/passwordAction';
 import Laptop from '../assets/laptop.jpg'
 import Spinner from "./widgets/Spinner";
 
 
 const ResetPassword = () => {
-
-    const navigate = useLocation();
 
     const url = window.location.href;
     let res = url.split('#');
