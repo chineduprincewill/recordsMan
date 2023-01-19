@@ -1,22 +1,43 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { forgotPassword } from "../actions/passwordAction";
+import React, { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom';
+import { resetPassword } from '../actions/passwordAction';
 import Laptop from '../assets/laptop.jpg'
 import Spinner from "./widgets/Spinner";
 
-const ForgotPassword = () => {
+
+const ResetPassword = () => {
+
+    const navigate = useLocation();
+
+    const url = window.location.href;
+    let res = url.split('#');
 
     const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [confirm, setConfirm] = useState();
+    const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null);
-    const [submitting, setSubmitting] = useState(false);
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        forgotPassword(email, setSuccess, setError, setSubmitting);
+        const body = {
+            token : res[1],
+            email,
+            password,
+            password_confirmation : confirm
+        }
+
+        resetPassword(body, setSuccess, setError, setSubmitting);
+
     }
+
+    if(success !== null){
+        alert('Password Reset Successful!!!');
+        navigate('/login');
+    }
+
 
     return (
         <div className="w-full bg-white py-16 px-4">
@@ -24,8 +45,7 @@ const ForgotPassword = () => {
                 <img className="w-[500px] mx-auto my-4" src={Laptop} alt="/" />
                 <div className="flex flex-col justify-center">
                     <form onSubmit={handleSubmit}>
-                        <h1 className="md:text-4xl text-3xl text-center md:text-left font-bold my-2 py-2">Forgot Password ?</h1>
-                        {success !== null && <span className="text-[green] text-sm py-1">{success}</span>}
+                        <h1 className="md:text-4xl text-3xl text-center md:text-left font-bold my-2 py-2">Reset Password !</h1>
                         {error !== null && <span className="text-[red] text-sm py-1">{error}</span>}
                         <p className="my-4">
                             <input 
@@ -34,6 +54,24 @@ const ForgotPassword = () => {
                                 placeholder="Enter email" 
                                 required
                                 onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </p>
+                        <p className="my-4">
+                            <input 
+                                className="p-3 flex w-full rounded-md text-black border border-gray-900" 
+                                type="password" 
+                                placeholder="New password" 
+                                required
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </p>
+                        <p className="my-4">
+                            <input 
+                                className="p-3 flex w-full rounded-md text-black border border-gray-900" 
+                                type="password" 
+                                placeholder="Confirm password" 
+                                required
+                                onChange={(e) => setConfirm(e.target.value)}
                             />
                         </p>
                         <div className="mb-0">
@@ -54,4 +92,4 @@ const ForgotPassword = () => {
     )
 }
 
-export default ForgotPassword
+export default ResetPassword
