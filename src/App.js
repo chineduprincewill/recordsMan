@@ -29,6 +29,7 @@ import CreateTaxpayer from "./components/protected/taxpayers/CreateTaxpayer";
 import EditTaxpayer from "./components/protected/taxpayers/EditTaxpayer";
 import CreateTax from "./components/protected/taxes/CreateTax";
 import MdaWindows from "./components/protected/mdawindows/MdaWindows";
+import ResetPassword from "./components/ResetPassword";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
                 <Route exact path="/" element={<Landing />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/forgot-password" element={<ForgotPassword />} />
+                <Route exact path="/reset-password" element={<ResetPassword />} />
                 <Route exact path="/self-service" element={<SelfService />} />
                 <Route exact path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} /> 
                 <Route exact path="/revenue-windows" element={<PrivateRoute><Windows /></PrivateRoute>} /> 
