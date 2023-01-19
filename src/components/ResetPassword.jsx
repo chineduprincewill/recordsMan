@@ -35,6 +35,8 @@ const ResetPassword = () => {
 
     if(success !== null){
         alert('Password Reset Successful!!!');
+        setSuccess(null);
+        
         navigate('/login');
     }
 
