@@ -1,94 +1,102 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../actions/authAction";
-import Laptop from '../assets/laptop.jpg'
-import { AuthContext } from "../context/AuthContext";
-import Spinner from "./widgets/Spinner";
+import PublicHeader from "./PublicHeader"
+import { AiOutlineLogin } from 'react-icons/ai'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Spinner from '../widgets/Spinner'
+import { useLoginUserMutation } from '../services/authApi'
+import homeBanner from '../assets/home-banner.png'
 
 const Login = () => {
 
     const navigate = useNavigate();
 
-    const { isLoggedin, authenticate, setAuthenticatedUser } = useContext(AuthContext);
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loggingin, setLoggingin] = useState(false);
+    const [logginIn, setLogginIn] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
-    const [success, setSuccess] = useState(null);
-    const [error, setError] = useState(null);
+    const [loginUser, {data, isError, error}] = useLoginUserMutation();
 
+    useEffect(() => {
+        if(data && data.token) {
+            localStorage.setItem("login", JSON.stringify({
+                userLogin: true,
+                token: data.token,
+                role: data.role,
+                user: data.user
+            }));
 
-    const handleSubmit = (e) => {
-
-        e.preventDefault();
-
-        const body = {
-            email, password
+            setErrorMsg("");
+            setEmail("");
+            setPassword("");
+            navigate('/dashboard');
+            window.location.reload();
         }
 
-        loginUser(body, setSuccess, setError, setLoggingin);
+        if(isError){
+            setErrorMsg(error.data.error)
+            setLogginIn(false);
+        }
+        // eslint-disable-next-line
+    }, [data, isError]);
+
+
+    const handleLogin = async () => {
+
+        if(email === '' || password === ''){
+            alert('You must enter email and password')
+        }
+        else{ 
+            setLogginIn(true);
+            await loginUser({ email, password });
+        }
 
     }
 
 
     useEffect(() => {
-
-        if(isLoggedin){
-            navigate("/dashboard");
+        if(localStorage.getItem('login') !== null){
+            navigate('/dashboard');
         }
-    }, [isLoggedin, navigate])
-
-
-    useEffect(() => {
-        if(success !== null){
-
-            authenticate(success.token, success.role);
-            setAuthenticatedUser(success.user);
-            navigate("/dashboard");
-            window.location.reload();
-        }
-    }, [authenticate, setAuthenticatedUser, navigate, success, isLoggedin]);
-
+    }, [navigate])
 
     return (
-        <div className="w-full bg-white py-16 px-4">
-            <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
-                <img className="w-[500px] mx-auto my-4" src={Laptop} alt="/" />
-                <div className="flex flex-col justify-center">
-                    <h1 className="md:text-4xl text-3xl text-center md:text-left font-bold my-2 py-2">Login</h1>
-                    <p className="font-medium w-full py-3 mx-auto"><span className="text-[red]">{error !== null && error}</span></p>
-                    
-                    <form onSubmit={handleSubmit}>
-                        <p className="mb-8">
-                            <input 
-                                className="p-3 flex w-full rounded-md text-black border border-gray-900" 
-                                type="email" 
-                                placeholder="Enter email" 
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </p>
-                        <p className="mt-4">
-                            <input 
-                                className="p-3 flex w-full shadow rounded-md text-black border border-gray-900" 
-                                type="password" 
-                                placeholder="Enter password" 
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                        </p>
-                        <p className="text-sm pb-2 text-right text-gray-500 mt-1">Forgot password?<Link to="/forgot-password"><span className="text-[#00df9a]"> Click here</span></Link></p>
-                        {loggingin ? <Spinner w='135' /> : 
-                            <button 
-                                className="bg-black text-[#00df9a] w-full rounded-md font-medium my-2 md:mx-0 py-3"
-                                type="submit"
-                            >
-                                Sign in
-                            </button>
-                        }
-                    </form>
+        <div>
+            <PublicHeader />
+            <div className="w-full mt-24 grid lg:grid-cols-6 px-12">
+                <div className='col-span-1'></div>
+                <div className='col-span-2 flex justify-center lg:border-r border-gray-300 dark:border-gray-800 p-4'>
+                    <img src={homeBanner} alt="home-banner" className='hidden lg:block' />
                 </div>
+                <div className="col-span-2 w-full lg:px-8">
+                    <div className='flex justify-center'>
+                        <AiOutlineLogin size={50} />
+                    </div>
+                    {errorMsg && <span className='text-red-500'>{errorMsg}</span>}
+                    <input 
+                        type="email" 
+                        placeholder="email"
+                        className="w-full bg-transparent p-3 border-b border-slate-500 my-8"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+        
+                    <input 
+                        type="password" 
+                        placeholder="password"
+                        className="w-full bg-transparent p-3 border-b border-slate-500 my-8"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    {logginIn ? <div className='mt-6'><Spinner w={160} /></div> : 
+                        <button 
+                            className="w-full bg-transparent p-3 border border-slate-500 rounded-full my-12"
+                            onClick={handleLogin}
+                        >
+                            Sign in
+                        </button>
+                    }
+                </div>
+                <div className='col-span-1'></div>
             </div>
         </div>
     )

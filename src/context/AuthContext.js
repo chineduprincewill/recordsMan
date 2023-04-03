@@ -4,66 +4,39 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
 
-    const [isLoggedin, setIsLoggedin] = useState(false);
-    const [token, setToken] = useState('');
-    const [role, setRole] = useState('');
-    const [user, setUser] = useState(null);
+    const loginData = JSON.parse(localStorage.getItem('login'));
 
-    const authenticate = (usertoken, userrole) => {
-
-        localStorage.setItem('ls_token', usertoken);
-        localStorage.setItem('ls_role', userrole);
-        localStorage.setItem('ls_isLoggedin', true);
-    }
+    //const [isLoggedin, setIsLoggedin] = useState(false);
+    const [token, setToken] = useState(loginData ? loginData.token : '');
+    const [role, setRole] = useState(loginData ? loginData.role : '');
+    const [user, setUser] = useState(loginData ? loginData.user : null);
 
     const logout = () => {
         setToken('');
-        localStorage.removeItem('ls_token');
-
         setRole('');
-        localStorage.removeItem('ls_role');
-
-        setIsLoggedin(false);
-        localStorage.removeItem('ls_isLoggedin');
-
         setUser(null);
-        localStorage.removeItem('ls_user');
+        localStorage.removeItem('login');
+        window.location.reload();
     }
 
-    const setAuthenticatedUser = (userObject) => {
+    /**const setAuthenticatedUser = (userObject) => {
         localStorage.setItem('ls_user', JSON.stringify(userObject));
-    }
+    }*/
 
 
     useEffect(() => {
         
-        if(localStorage.getItem('ls_token')){
-            setToken(localStorage.getItem('ls_token'));
+        if(localStorage.getItem('login')){
+            //const { token, role, user } = loginData;
+            setToken(loginData.token);
+            setRole(loginData.role);
+            setUser(loginData.user);
         }
-    }, [])
+    }, [loginData])
 
-    useEffect(() => {
-        const loginStatus = localStorage.getItem('ls_isLoggedin');
-        if(loginStatus){
-            setIsLoggedin(loginStatus);
-        }
-    }, [])
-
-    useEffect(() => {
-        
-        if(localStorage.getItem('ls_role')){
-            setRole(localStorage.getItem('ls_role'));
-        }
-    }, [])
-
-    useEffect(() => {
-        if(localStorage.getItem('ls_user')){
-            setUser(JSON.parse(localStorage.getItem('ls_user')));
-        }
-    }, [])
 
     return(
-        <AuthContext.Provider value={{isLoggedin, token, authenticate, logout, setAuthenticatedUser, user, role}}>
+        <AuthContext.Provider value={{ token, logout, user, role}}>
             {props.children}
         </AuthContext.Provider>
     )

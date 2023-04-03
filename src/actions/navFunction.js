@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRecoilState } from 'recoil';
-import { system_admin, system_auditor, mda_admin, mda_auditor } from '../components/protected/common/sidebar/utils/NavDB'
+import { system_admin, system_auditor, admin, auditor } from '../components/protected/sidebar/NavDB';
 import { ActiveTabState } from '../atoms/ActiveTabState';
 import { Link } from 'react-router-dom';
 
@@ -8,23 +8,23 @@ export const generateLinks = (user, role) => {
 
     let navLinks;
 
-    if(user && user.account === 'system' && role === 'admin'){
+    if(user && user.groupid === "0" && role === 'admin'){
         navLinks = system_admin.map((link) => (
             <NavItem link={link} key={link.id} />
         ))
     }
-    else if(user && user.account === 'system' && role === 'auditor'){
+    else if(user && user.groupid === "0" && role === 'auditor'){
         navLinks = system_auditor.map((link) => (
             <NavItem link={link} key={link.id} />
         ))
     }
-    else if(user && user.account === 'mda' && role === 'admin'){
-        navLinks = mda_admin.map((link) => (
+    else if(user && user.groupid > "0" && role === 'admin'){
+        navLinks = admin.map((link) => (
             <NavItem link={link} key={link.id} />
         ))
     }
-    else if(user && user.account === 'mda' && role === 'auditor'){
-        navLinks = mda_auditor.map((link) => (
+    else if(user && user.groupid > "0" && role === 'auditor'){
+        navLinks = auditor.map((link) => (
             <NavItem link={link} key={link.id} />
         ))
     }
@@ -42,15 +42,15 @@ function NavItem ({ link }) {
         <Link 
             to={link.url}
             onClick={() => setActiveNavItem(link.id)}
-            className={`w-full flex items-center justify-start space-x-8 px-5 cursor-pointer hover:border-gray-400 border-l-4 border-transparent group ${activeNavItem === link.id && "border-gray-400 bg-white py-3"}`}
+            className={`w-full flex items-center justify-start space-x-8 px-5 cursor-pointer hover:border-gray-400 border-l-4 border-transparent group ${activeNavItem === link.id && "border-gray-400 bg-white py-3"} text-sm`}
         >
             <span 
-                className={`text-gray-500 group-hover:text-white ${activeNavItem === link.id && "text-gray-700"}`}
+                className={`group-hover:text-slate-600 ${activeNavItem === link.id ? "text-gray-700" : "text-white"}`}
             >
                 {link.icon}
             </span>
             <h1 
-                className={`text-gray-500 group-hover:text-white xl:flex hidden ${activeNavItem === link.id && "text-gray-700"}`}
+                className={`group-hover:text-slate-600 ${activeNavItem === link.id ? "text-gray-700" : "text-white"}`}
             >
                 {link.title}
             </h1>

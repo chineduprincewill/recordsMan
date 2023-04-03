@@ -4,29 +4,47 @@ export const DataContext = createContext();
 
 const DataContextProvider = (props) => {
 
-    const [revenueField, setRevenueField] = useState(null);
-    const [taxfields, setTaxfields] = useState(null);
+    const [record, setRecord] = useState(null);
+    //const [donationsCount, setDonationsCount] = useState(0);
+    //const [totalPledge, setTotalPledge] = useState(0);
+    //const [totalPaid, setTotalPaid] = useState(0);
+    //const closedrop = false;
 
-    const editRevenueFields = (fieldObject) => {
-        setRevenueField(fieldObject);
+    const refreshRecord = (val) => {
+        setRecord(val);
     }
 
-    const editTaxfields = (taxObject) => {
-        setTaxfields(taxObject);
+    /*const updateCount = (val) => {
+        setDonationsCount(val);
     }
+
+    const updatePledge = (val) => {
+        setTotalPledge(val);
+    }
+
+    const updatePaid = (val) => {
+        setTotalPaid(val);
+    }*/
 
     useEffect(() => {
         
-        editRevenueFields();
-    }, [])
+        refreshRecord();
+    }, [record])
+
+    /*useEffect(() => {
+        updateCount()
+    }, [donationsCount])
 
     useEffect(() => {
+        updatePledge();
+    }, [totalPledge])
 
-        editTaxfields();
-    }, [])
+    useEffect(() => {
+        updatePaid();
+    }, [totalPaid])*/
 
     return(
-        <DataContext.Provider value={{editRevenueFields, revenueField, editTaxfields, taxfields}}>
+        <DataContext.Provider value={{refreshRecord, record, /*updateCount, donationsCount, updatePledge, totalPledge, updatePaid, totalPaid*/}}>
             {props.children}
         </DataContext.Provider>
     )
